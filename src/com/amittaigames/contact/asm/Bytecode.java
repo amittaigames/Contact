@@ -41,6 +41,7 @@ public class Bytecode {
 	public static final byte REG_BP =		7;
 	
 	
+	
 	/*
 	
 			DATA TYPES
@@ -49,5 +50,15 @@ public class Bytecode {
 	
 	public static final byte DATA_REG =		1;
 	public static final byte DATA_DEC =		2;
+	
+	
+	
+	/*
+	
+			XCALLS
+	
+	 */
+	
+	public static final byte X_IPRINT =		1;
 	
 }

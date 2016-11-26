@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Compiler {
-
+	
 	private enum DataType {
+		NULL,
 		INST,
 		REG,
 		DECIMAL
@@ -46,6 +47,7 @@ public class Compiler {
 					gen.add(Bytecode.REG);
 					gen.add(getRegisterByName(args[1]));
 					writeByType(gen, args[2]);
+					continue;
 				}
 				
 				//
@@ -55,6 +57,7 @@ public class Compiler {
 					gen.add(Bytecode.ADD);
 					gen.add(getRegisterByName(args[1]));
 					writeByType(gen, args[2]);
+					continue;
 				}
 				
 				//
@@ -62,6 +65,7 @@ public class Compiler {
 				//
 				else if (args[0].equals("XCALL")) {
 					gen.add(Bytecode.XCALL);
+					continue;
 				}
 				
 				//
@@ -86,6 +90,7 @@ public class Compiler {
 	}
 	
 	private static byte getRegisterByName(String name) {
+		name = name.replace("#", "");
 		if (name.equals("A"))
 			return Bytecode.REG_A;
 		if (name.equals("B"))
@@ -116,8 +121,13 @@ public class Compiler {
 	private static DataType getType(String arg) {
 		if (arg.startsWith("$"))
 			return DataType.DECIMAL;
-		else
+		else if (arg.startsWith("#"))
 			return DataType.REG;
+		else {
+			System.err.println("Unknown data type!");
+			System.exit(1);
+			return null;
+		}
 	}
 
 }

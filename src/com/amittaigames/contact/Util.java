@@ -22,15 +22,21 @@ public class Util {
 		return sb.toString();
 	}
 	
-	/*
+	
 	public static byte[] readExternalBytes(String path) {
+		byte[] data = null;
+		
 		try {
 			DataInputStream dis = new DataInputStream(new FileInputStream(path));
-			
+			int len = dis.readInt();
+			data = new byte[len];
+			dis.readFully(data);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.exit(1);
 		}
+		
+		return data;
 	}
-	*/
 	
 }
