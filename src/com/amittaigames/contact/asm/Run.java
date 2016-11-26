@@ -51,6 +51,23 @@ public class Run {
 			}
 			
 			//
+			//	SUB
+			//
+			else if (data[i] == Bytecode.SUB) {
+				byte reg = data[++i];
+				byte type = data[++i];
+				byte mem = data[++i];
+				
+				if (type == Bytecode.DATA_DEC)
+					regs[reg] -= mem;
+				else if (type == Bytecode.DATA_REG)
+					regs[reg] -= regs[mem];
+				
+				i++;
+				continue;
+			}
+			
+			//
 			//	XCALL
 			//
 			else if (data[i] == Bytecode.XCALL) {

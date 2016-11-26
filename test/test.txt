@@ -1,12 +1,13 @@
-REG B $23
-ADD B $7
-REG A $1
+REG #B $23
+ADD #B $7
+REG #A $1
 XCALL
 
 ==================
 
 REG: [reg] [val] - Sets a value to a register
 It should be noted that decimal values have a "$" in front to specify
+The register also has a "#" to denote a register value
 
 ADD: [reg] [val] - Adds a value to a register
 

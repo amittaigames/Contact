@@ -37,6 +37,9 @@ public class Compiler {
 			List<Byte> gen = new ArrayList<>();
 			
 			for (String line : lines) {
+				if (line.isEmpty())
+					continue;
+				
 				no++;
 				String[] args = line.split(" ");
 
@@ -55,6 +58,13 @@ public class Compiler {
 				//
 				else if (args[0].equals("ADD")) {
 					gen.add(Bytecode.ADD);
+					gen.add(getRegisterByName(args[1]));
+					writeByType(gen, args[2]);
+					continue;
+				}
+				
+				else if (args[0].equals("SUB")) {
+					gen.add(Bytecode.SUB);
 					gen.add(getRegisterByName(args[1]));
 					writeByType(gen, args[2]);
 					continue;
@@ -95,6 +105,10 @@ public class Compiler {
 			return Bytecode.REG_A;
 		if (name.equals("B"))
 			return Bytecode.REG_B;
+		if (name.equals("C"))
+			return Bytecode.REG_C;
+		if (name.equals("D"))
+			return Bytecode.REG_D;
 		
 		// TODO: Implement the rest of the registers
 		
