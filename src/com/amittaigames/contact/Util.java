@@ -1,6 +1,8 @@
 package com.amittaigames.contact;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
 import java.io.FileReader;
 
 public class Util {
@@ -19,5 +21,16 @@ public class Util {
 		}
 		return sb.toString();
 	}
+	
+	/*
+	public static byte[] readExternalBytes(String path) {
+		try {
+			DataInputStream dis = new DataInputStream(new FileInputStream(path));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	*/
 	
 }
