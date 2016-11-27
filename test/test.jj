@@ -1,7 +1,4 @@
-REG #B $23
-REG #C $3
 REG #A $1
-
-SUB #B #C
-
+REG #B $76
+ADD #B $4
 XCALL

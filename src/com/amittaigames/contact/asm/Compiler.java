@@ -63,11 +63,35 @@ public class Compiler {
 					continue;
 				}
 				
+				//
+				//	SUB
+				//
 				else if (args[0].equals("SUB")) {
 					gen.add(Bytecode.SUB);
 					gen.add(getRegisterByName(args[1]));
 					writeByType(gen, args[2]);
 					continue;
+				}
+				
+				//
+				//	PUSH
+				//
+				else if (args[0].equals("PUSH")) {
+					gen.add(Bytecode.PUSH);
+					writeByType(gen, args[1]);
+					continue;
+				}
+				
+				//
+				//	POP
+				//
+				else if (args[0].equals("POP")) {
+					gen.add(Bytecode.POP);
+					if (args.length == 1) {
+						gen.add(Bytecode.NULL);
+					} else {
+						writeByType(gen, args[1]);
+					}
 				}
 				
 				//

@@ -23,6 +23,8 @@ public class Bytecode {
 	public static final byte SUB = 			12;
 	public static final byte MUL = 			13;
 	public static final byte DIV = 			14;
+	public static final byte PUSH = 		15;
+	public static final byte POP = 			16;
 	
 	
 	
